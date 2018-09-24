@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.annotation.UiThread
 import android.view.View
+import cn.com.liaozp.alarmclock.tools.AlarmTools
 import cn.com.liaozp.alarmclock.xutils.db.DbTool
 import cn.com.liaozp.alarmclock.xutils.db.T_ALARM_CLOCK
 import kotlinx.android.synthetic.main.layout_content.*
@@ -73,6 +74,7 @@ class ContentActivity : BasicActivity() {
         if(model!=null && model.REPEAT_DAY== SetClockActivity.WeekDAY.Never.chnName){
             model.ACTIVE="0"
             DbTool.saveOrUpdate(model);
+            AlarmTools.cancelAlarm(this,model);
         }
     }
 }

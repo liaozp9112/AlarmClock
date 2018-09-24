@@ -14,6 +14,7 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.content_set_clock.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import android.widget.EditText
+import cn.com.liaozp.alarmclock.tools.AlarmTools
 import cn.com.liaozp.alarmclock.tools.FileTools
 import cn.com.liaozp.alarmclock.xutils.db.DbTool
 import cn.com.liaozp.alarmclock.xutils.db.T_ALARM_CLOCK
@@ -191,21 +192,8 @@ class SetClockActivity :BasicActivity() {
 
 
     private fun setAlarmClock(){
-        var triggerAtTime = System.currentTimeMillis();
-        var interval:Long = 1000*60*10
-        var alarmManager = getSystemService(Context.ALARM_SERVICE) as  AlarmManager;
-        if (model.REPEAT_DAY==WeekDAY.Never.chnName){
-            var calendar = Calendar.getInstance();
-            calendar.set(Calendar.MINUTE,timepicker.currentMinute);
-            calendar.set(Calendar.HOUR,timepicker.currentHour);
-            var intent = Intent(this@SetClockActivity,AlramReceiver::class.java);
-            intent.action = AlockApp.instance().packageName;
-            var mBundle = Bundle();
-           // mBundleputParcelable("MODEL",model);
-            intent.putExtra("ID",model.ID);
-            var pi = PendingIntent.getBroadcast(this@SetClockActivity,0,intent,0);
+        AlarmTools.setAlarm(this,model);
 
-            alarmManager.set(AlarmManager.RTC_WAKEUP,triggerAtTime,pi);
-        }
+
     }
 }
