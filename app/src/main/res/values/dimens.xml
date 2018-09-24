@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="cardview_height">60dp</dimen>
+    <dimen name="cardview_cornerRadius">2dp</dimen>
+    <dimen name="cardview_cardElevation">5dp</dimen>
+</resources>
