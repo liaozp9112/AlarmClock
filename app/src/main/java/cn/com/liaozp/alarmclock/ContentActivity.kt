@@ -20,6 +20,7 @@ class ContentActivity : BasicActivity() {
     var  mMediaPlayer = MediaPlayer();
     private var model = T_ALARM_CLOCK();
     private var id :String ="";
+    //
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_content)
